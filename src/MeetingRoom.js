@@ -12,7 +12,11 @@ class MeetingRoom {
     }
 
     inUse() {
-        this._available = false;
+        if (this._available === false) {
+            throw new Error('That room is already in use');
+        } else {
+            this._available = false;
+        }
     }
 
     noLongerInUse() {

@@ -24,7 +24,6 @@ describe('Office', () => {
         // I would like to add a meeting room to the office
         it('can add a new meeting room', () => {
             office.addRoom(room);
-            console.log(office);
             expect(office.rooms).toEqual([room]);
         });
     });

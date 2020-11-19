@@ -42,5 +42,13 @@ describe('MeetingRoom', () => {
             room.noLongerInUse();
             expect(room.isAvailable()).toBeTruthy();
         });
+
+        // As a staff member
+        // So that I can avoid interrupting a meeting
+        // I would like an error if I try to use a room that has already been entered
+        it('cannot enter a room that is already occupied', () => {
+            room.inUse();
+            expect(() => {room.inUse()}).toThrowError('That room is already in use');
+        });
     });
 });

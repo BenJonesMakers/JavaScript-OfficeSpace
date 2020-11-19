@@ -3,10 +3,12 @@
 describe('Office', () => {
     var office;
     var room;
+    var busyRoom;
+    var freeRoom;
 
     beforeEach(function() {
         office = new Office();
-        room = jasmine.createSpyObj('room', ['name']);
+        room = jasmine.createSpyObj('room', ['name', 'isAvailable']);
     });
 
     describe('Rooms', () => {
@@ -25,6 +27,19 @@ describe('Office', () => {
         it('can add a new meeting room', () => {
             office.addRoom(room);
             expect(office.rooms).toEqual([room]);
+        });
+
+        // As a staff member
+        // So that I can see where to have my meeting
+        // I would like to be able to see a list of available rooms in the office
+        it('shows only available rooms', () => {
+            busyRoom = jasmine.createSpyObj('room', ['name', 'isAvailable']);
+            freeRoom = jasmine.createSpyObj('room', ['name', 'isAvailable']);
+            office.addRoom(freeRoom);
+            office.addRoom(busyRoom);
+            busyRoom.isAvailable.and.returnValue(false);
+            freeRoom.isAvailable.and.returnValue(true);
+            expect(office.availableRooms()).toEqual([freeRoom]);
         });
     });
     

@@ -27,6 +27,7 @@ Done
 ````In order to end a meeting
 ````I would like to be able to leave the meeting room and this should make it available again
 
+Done
 ````As a staff member
 ````So that I can avoid interrupting a meeting
 ````I would like an error if I try to use a room that has already been entered

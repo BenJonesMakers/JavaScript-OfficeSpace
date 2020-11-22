@@ -1,8 +1,9 @@
 'use strict';
 
 class Office {
-    constructor() {
+    constructor(name = "Main Office") {
         this.rooms = [];
+        this.name = name;
     }
 
     addRoom(room) {

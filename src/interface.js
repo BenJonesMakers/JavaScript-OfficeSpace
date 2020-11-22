@@ -4,17 +4,40 @@ $(document).ready(function() {
 
     var mainOffice = new Office();
     var room = new MeetingRoom();
-    mainOffice.addRoom(room);
+
+    $(document).on('click','.rooms-btn',(event)=>{
+        var id = $(event.target).attr('id');
+        console.log(id);
+        mainOffice.rooms.forEach(function(element, index) {
+            if (element.name === id) {
+                console.log('it matched the name');
+                console.log(element);
+                element.inUse();
+                console.log(element);
+            }
+        })
+   })
+
+    // $('.rooms-btn').click(function() {
+    //     console.log('clicked');
+        
+    // })
 
     const buildRoomList = function() {
         var rooms = mainOffice.rooms;
         $('#all-rooms').html('');
 
-        if (rooms === []) {
+        if (rooms.length === 0) {
             $('#all-rooms').html('<li>No Meeting Rooms have been added</li>');   
         } else {
             rooms.forEach(function( element, index ) {
-                $('#all-rooms').append('<li>' + element.name + '</li>');   
+                $('#all-rooms').append(
+                    '<li>' +
+                    '<input class="rooms-btn" id="' + 
+                    element.name +
+                    '" type="button" value="Enter"></input>  ' + 
+                    element.name + 
+                    '</li>');   
             })
         }
     }
@@ -22,13 +45,14 @@ $(document).ready(function() {
     buildRoomList();
     
     $('#office-name').text(mainOffice.name);
-    console.log(mainOffice.name);
+
     $('#add-room-btn').click(function() {
         var roomName = $('#add-room-name').val();
         var newRoom = new MeetingRoom(roomName);
         mainOffice.addRoom(newRoom);
-        console.log(mainOffice.rooms);
         buildRoomList();
     })
+
+    
 
 })

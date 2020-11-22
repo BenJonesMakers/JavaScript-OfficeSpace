@@ -1,19 +1,27 @@
-<head></head>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <body>
-<h1>Office: <span id="office-name">Blank</span></h1>
-<div id="rooms-div">
-    <h2>All meeting rooms</h2>
-    <br>
-        <ul id="all-rooms">
-        </ul>
-</div>
-<h2>Available meeting rooms</h2>
-<br>
-New meeting room name: <input id="add-room-name" type="text"></input>
-<button id="add-room-btn" type="button">Add Meeting Room</button>
+    <div class="container">
+        <h1>Office: <span id="office-name">Blank</span></h1>
+        <div id="rooms-div" class="container p-3 my-3 bg-dark text-white">
+            <h2>All meeting rooms</h2>
+                <ul id="all-rooms"></ul>
+        </div>
+        <h2>Available meeting rooms</h2>
+        <br>
+        <div class="container p-3 my-3 bg-dark text-white">
+            New meeting room name: <input id="add-room-name" type="text"></input>
+            <button id="add-room-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Meeting Room</button>
+        </div>
+    </div>
+
     <script src="src/jquery.js"></script>
-    <script src="src/interface.js"></script>
-    <script src="src/MeetingRoom.js"></script>
-    <script src="src/Office.js"></script>
-    
+            <script src="src/interface.js"></script>
+            <script src="src/MeetingRoom.js"></script>
+            <script src="src/Office.js"></script>
 </body>

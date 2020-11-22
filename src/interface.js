@@ -16,6 +16,8 @@ $(document).ready(function() {
                 console.log(element);
             }
         })
+
+        buildAvailableRoomList();
    })
 
     // $('.rooms-btn').click(function() {
@@ -42,7 +44,27 @@ $(document).ready(function() {
         }
     }
 
+    const buildAvailableRoomList = function() {
+        var rooms = mainOffice.availableRooms();
+        $('#available-rooms').html('');
+
+        if (rooms.length === 0) {
+            $('#available-rooms').html('<li>No Meeting Rooms are available</li>');   
+        } else {
+            rooms.forEach(function( element, index ) {
+                $('#available-rooms').append(
+                    '<li>' +
+                    '<input class="rooms-btn" id="' + 
+                    element.name +
+                    '" type="button" value="Enter"></input>  ' + 
+                    element.name + 
+                    '</li>');   
+            })
+        }
+    }
+
     buildRoomList();
+    buildAvailableRoomList();
     
     $('#office-name').text(mainOffice.name);
 
@@ -51,6 +73,7 @@ $(document).ready(function() {
         var newRoom = new MeetingRoom(roomName);
         mainOffice.addRoom(newRoom);
         buildRoomList();
+        buildAvailableRoomList();
     })
 
     
